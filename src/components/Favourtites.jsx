@@ -8,7 +8,7 @@ import {
     removeCommentFromFav,
     fetchFavPost,
     fetchFavComment,
-} from "../actions";
+} from "../actions/fav";
 import ScrollToTop from "../ScrollToTop";
 import { FaTrash } from "react-icons/fa";
 

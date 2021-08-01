@@ -1,14 +1,15 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { useParams, Link } from "react-router-dom";
+import { fetchComments } from "../actions/comments";
+import { fetchPost } from "../actions/posts";
 import {
-    fetchComments,
-    fetchPost,
     addPostToFav,
     addCommentToFav,
     removePostFromFav,
     removeCommentFromFav,
-} from "../actions";
+} from "../actions/fav";
+
 import AuthorHeader from "./AuthorHeader";
 import Navbar from "./Navbar";
 import {
