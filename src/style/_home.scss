@@ -1,0 +1,35 @@
+@import 'media-queries';
+@import 'colors';
+@import 'fonts';
+
+.hero {
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $accent;
+    background-size: cover;
+    background-position: center;
+    clip-path: polygon(0 0, 100% 0, 100% 82%, 0% 100%);
+    margin-bottom: -15vh;
+
+    &__title {
+        font-size: 4rem;
+        color: $light;
+        font-family: $secondary-font;
+        text-align: center;
+
+        @include tablet {
+            font-size: 5rem;
+        }
+
+        @include desktop {
+            font-size: 6rem;
+        }
+
+        @include large {
+            font-size: 8rem;
+        }
+    }
+}

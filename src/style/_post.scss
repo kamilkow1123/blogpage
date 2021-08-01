@@ -1,0 +1,137 @@
+@import 'media-queries';
+@import 'colors';
+@import 'fonts';
+
+.post-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: $light;
+}
+
+.post {
+    width: 100%;
+    height: 100%;
+    max-width: 1000px;
+    margin: 0 20px;
+
+    &__title {
+        text-transform: uppercase;
+        padding: 2rem 0;
+        font-family: $secondary-font;
+        font-size: 3rem;
+        letter-spacing: 2px;
+        color: $dark;
+    }
+
+    &__author {
+        width: max-content;
+        position: relative;
+        color: $dark;
+
+        &::after {
+            content: '';
+            position: absolute;
+            height: 4px;
+            width: 100%;
+            background-color: $accent;
+            bottom: -15px;
+            left: 0;
+        }
+    }
+
+    &__wrapper {
+        margin: 1rem;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &__fav {
+        font-size: 2rem;
+        cursor: pointer;
+    }
+
+    &__body {
+        line-height: 1.7;
+        text-align: justify;
+        margin: 0.5rem 0;
+        color: $dark;
+    }
+
+    &__links {
+        margin: 2rem 0;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__link {
+        color: $accent;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    &__header {
+        text-transform: uppercase;
+        padding: 1.5rem 0;
+        font-family: $secondary-font;
+        font-size: 2rem;
+        letter-spacing: 3px;
+        color: $dark;
+        font-weight: 300;
+    }
+}
+
+.comment {
+    margin: 1rem 0;
+
+    @include tablet {
+        width: 75%;
+    }
+
+    @include desktop {
+        width: 60%;
+    }
+
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    &__title {
+        line-height: 1.5;
+        margin-bottom: 0.5rem;
+        color: $dark;
+    }
+
+    &__fav {
+        font-size: 1.5rem;
+        cursor: pointer;
+        margin-left: 0.8rem;
+        margin-top: 0.4rem;
+    }
+
+    &__author {
+        width: max-content;
+        position: relative;
+        color: $dark;
+
+        &::after {
+            content: '';
+            position: absolute;
+            height: 2px;
+            width: 50%;
+            background-color: $accent;
+            bottom: -15px;
+            left: 0;
+        }
+    }
+
+    &__body {
+        margin: 2rem 0 4rem 0;
+        line-height: 1.5;
+        color: $dark;
+    }
+}

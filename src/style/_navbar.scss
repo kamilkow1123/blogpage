@@ -1,0 +1,52 @@
+@import 'colors';
+@import 'fonts';
+
+.nav {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: $light;
+
+    &__wrapper {
+        width: 100%;
+        max-width: 1000px;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 20px;
+    }
+
+    &__link {
+        color: $dark;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-family: $secondary-font;
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+        transition: all 0.3s ease-in-out;
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            background-color: $accent;
+            bottom: -2px;
+            left: 0;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        &:hover {
+            color: $accent;
+
+            &::after {
+                transform: scaleX(100%);
+            }
+        }
+    }
+}
