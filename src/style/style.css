@@ -611,6 +611,11 @@
   background: grey;
 }
 
+.postlist__cover img {
+  width: 100%;
+  height: 100%;
+}
+
 .postlist__content {
   padding: 1.5rem;
   -webkit-box-flex: 1;
@@ -648,6 +653,24 @@
 
 .postlist__author {
   color: #000;
+}
+
+.postlist__description {
+  line-height: 1.5;
+}
+
+.postlist__tags {
+  padding: 2.5rem 0 1rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.postlist__tag {
+  background-color: lightgrey;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  border-radius: 5px;
 }
 
 .postlist__wrapper {

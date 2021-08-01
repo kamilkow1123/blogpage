@@ -41,6 +41,11 @@
         width: 100%;
         height: 300px;
         background: grey;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
     }
 
     &__content {
@@ -69,6 +74,23 @@
 
     &__author {
         color: $dark;
+    }
+
+    &__description {
+        line-height: 1.5;
+    }
+
+    &__tags {
+        padding: 2.5rem 0 1rem 0;
+        display: flex;
+        // justify-content: space-around;
+    }
+
+    &__tag {
+        background-color: lightgrey;
+        padding: 0.5rem;
+        margin-right: 1rem;
+        border-radius: 5px;
     }
 
     &__wrapper {

@@ -17,16 +17,28 @@ const PostsList = ({ fetchPosts, posts }) => {
             return (
                 <div className="postlist__post" key={post.id}>
                     <div className="postlist__cover">
-                        <img
-                            src={`https://picsum.photos/750/300?random=${post.id}`}
-                            alt="post"
-                        />
+                        <img src={post.imageURL} alt="post" />
                     </div>
                     <div className="postlist__content">
                         <div>
                             <div className="postlist__title">{post.title}</div>
                             <div className="postlist__author">
-                                <AuthorHeader userId={post.userId} />
+                                {/* <AuthorHeader userId={post.userId} /> */}
+                            </div>
+                            <div className="postlist__description">
+                                {post.description}
+                            </div>
+                            <div className="postlist__tags">
+                                {post.tagList.map(tag => {
+                                    return (
+                                        <div
+                                            key={tag}
+                                            className="postlist__tag"
+                                        >
+                                            {tag}
+                                        </div>
+                                    );
+                                })}
                             </div>
                         </div>
                         <div className="postlist__wrapper">
