@@ -657,6 +657,7 @@
 
 .postlist__description {
   line-height: 1.5;
+  margin-top: 1rem;
 }
 
 .postlist__tags {
@@ -700,6 +701,25 @@
 .postlist__link:hover {
   background: #fff;
   color: #ff365f;
+}
+
+.author {
+  padding: 0.5rem 0;
+  display: "inline-block";
+  position: relative;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+.author::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background-color: #ff365f;
 }
 
 * {

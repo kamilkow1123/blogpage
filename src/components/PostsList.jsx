@@ -23,7 +23,7 @@ const PostsList = ({ fetchPosts, posts }) => {
                         <div>
                             <div className="postlist__title">{post.title}</div>
                             <div className="postlist__author">
-                                {/* <AuthorHeader userId={post.userId} /> */}
+                                <AuthorHeader username={post.author.username} />
                             </div>
                             <div className="postlist__description">
                                 {post.description}

@@ -2,21 +2,23 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchUser } from "../actions/users";
 
-const AuthorHeader = ({ userId, fetchUser, user }) => {
+const AuthorHeader = ({ username, fetchUser, user }) => {
     useEffect(
         () => {
-            fetchUser(userId);
+            fetchUser(username);
         },
-        [ userId, fetchUser ]
+        [ username, fetchUser ]
     );
 
     return !user ? null : (
-        <p style={{ display: "inline-block" }}>by {user.name}</p>
+        <p className="author">by {`${user.first_name} ${user.last_name}`}</p>
     );
 };
 
 const mapStateToProps = (state, ownProps) => {
-    return { user: state.users.find(user => user.id === ownProps.userId) };
+    return {
+        user : state.users.find(user => user.username === ownProps.username),
+    };
 };
 
 export default connect(mapStateToProps, { fetchUser })(AuthorHeader);

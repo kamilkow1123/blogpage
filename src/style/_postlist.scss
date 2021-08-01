@@ -78,12 +78,12 @@
 
     &__description {
         line-height: 1.5;
+        margin-top: 1rem;
     }
 
     &__tags {
         padding: 2.5rem 0 1rem 0;
         display: flex;
-        // justify-content: space-around;
     }
 
     &__tag {
