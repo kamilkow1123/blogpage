@@ -38,7 +38,7 @@ const Post = ({
             fetchPost(id);
             fetchComments(id);
         },
-        [ id ]
+        [ id, fetchPost, fetchComments ]
     );
 
     const renderComments = () => {

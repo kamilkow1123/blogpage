@@ -38,7 +38,7 @@ const Favourtites = ({
                 fetchFavComment(commentId);
             }
         },
-        [ favPostsIds, favCommentsIds ]
+        [ favPostsIds, favCommentsIds, fetchFavPost, fetchFavComment ]
     );
 
     const renderFavPosts = () => {

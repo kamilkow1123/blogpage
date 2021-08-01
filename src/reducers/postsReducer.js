@@ -15,7 +15,7 @@ const INITIAL_STATE = {
     favouritePosts    : [],
 };
 
-export default (state = INITIAL_STATE, action) => {
+const postsReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case FETCH_POSTS:
             return { ...state, listOfPosts: action.payload };
@@ -60,3 +60,5 @@ export default (state = INITIAL_STATE, action) => {
             return state;
     }
 };
+
+export default postsReducer;

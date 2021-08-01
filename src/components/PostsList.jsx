@@ -5,9 +5,12 @@ import AuthorHeader from "./AuthorHeader";
 import { Link } from "react-router-dom";
 
 const PostsList = ({ fetchPosts, posts }) => {
-    useEffect(() => {
-        fetchPosts();
-    }, []);
+    useEffect(
+        () => {
+            fetchPosts();
+        },
+        [ fetchPosts ]
+    );
 
     const renderPosts = () => {
         return posts.map(post => {
@@ -16,6 +19,7 @@ const PostsList = ({ fetchPosts, posts }) => {
                     <div className="postlist__cover">
                         <img
                             src={`https://picsum.photos/750/300?random=${post.id}`}
+                            alt="post"
                         />
                     </div>
                     <div className="postlist__content">

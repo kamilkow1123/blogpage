@@ -3,9 +3,12 @@ import { connect } from "react-redux";
 import { fetchUser } from "../actions";
 
 const AuthorHeader = ({ userId, fetchUser, user }) => {
-    useEffect(() => {
-        fetchUser(userId);
-    }, []);
+    useEffect(
+        () => {
+            fetchUser(userId);
+        },
+        [ userId, fetchUser ]
+    );
 
     return !user ? null : (
         <p style={{ display: "inline-block" }}>by {user.name}</p>
