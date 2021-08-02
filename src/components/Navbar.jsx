@@ -22,7 +22,7 @@ const Navbar = ({ isAuthenticated, logout }) => {
                     )}
 
                     <Link className="nav__link" to="/favourites">
-                        Favourites
+                        Fav
                     </Link>
                 </div>
             </div>

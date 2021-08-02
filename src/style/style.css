@@ -361,7 +361,13 @@
 }
 
 .nav__link:last-child {
-  margin-left: 3rem;
+  margin-left: 1rem;
+}
+
+@media (min-width: 768px) {
+  .nav__link:last-child {
+    margin-left: 3rem;
+  }
 }
 
 .nav__link::after {

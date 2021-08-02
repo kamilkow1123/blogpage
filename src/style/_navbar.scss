@@ -33,7 +33,10 @@
         cursor: pointer;
 
         &:last-child {
-            margin-left: 3rem;
+            @include tablet {
+                margin-left: 3rem;
+            }
+            margin-left: 1rem;
         }
 
         &::after {
