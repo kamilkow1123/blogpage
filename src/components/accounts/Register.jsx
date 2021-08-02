@@ -11,16 +11,14 @@ const Register = ({ errorMessage, isAuthenticated, register }) => {
     useEffect(
         () => {
             if (errorMessage !== "") {
-                // console.log(errorMessage);
                 let tempErrors = {};
 
                 for (let newError in errorMessage) {
-                    // console.log(errorMessage[newError]);
-                    if (newError === "re_password")
-                        tempErrors[newError] = `Password is required`;
-                    else
-                        tempErrors[newError] = `${newError[0].toUpperCase() +
-                            newError.slice(1)} is required`;
+                    if (newError === "non_field_errors") {
+                        tempErrors["re_password"] = errorMessage[newError];
+                    } else {
+                        tempErrors[newError] = errorMessage[newError];
+                    }
                 }
                 setErrors(tempErrors);
             }
