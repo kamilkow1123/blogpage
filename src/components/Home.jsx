@@ -9,7 +9,7 @@ const Home = ({ user, loadUser }) => {
         () => {
             if (!user) loadUser();
         },
-        [ user ]
+        [ user, loadUser ]
     );
 
     return (

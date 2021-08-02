@@ -43,7 +43,7 @@ const Register = ({ errorMessage, isAuthenticated, register }) => {
                     <RegisterForm Register={Register} errors={errors} />
                 </div>
             ) : (
-                <Redirect to="/login" />
+                <Redirect to="/" />
             )}
         </div>
     );

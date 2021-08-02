@@ -17,7 +17,7 @@ const INITIAL_STATE = {
     error           : "",
 };
 
-export default function(state = INITIAL_STATE, action) {
+const authReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case USER_LOADING:
             return {
@@ -83,4 +83,6 @@ export default function(state = INITIAL_STATE, action) {
         default:
             return state;
     }
-}
+};
+
+export default authReducer;
