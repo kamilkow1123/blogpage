@@ -356,6 +356,10 @@
   position: relative;
 }
 
+.nav__link:last-child {
+  margin-left: 3rem;
+}
+
 .nav__link::after {
   content: '';
   position: absolute;
