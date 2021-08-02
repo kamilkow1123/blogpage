@@ -17,7 +17,7 @@ export const loadUser = () => async (dispatch, getState) => {
 
     try {
         const response = await resultsAPI.get(
-            "auth/users/me/",
+            "users/me/",
             tokenConfig(getState)
         );
 
@@ -34,7 +34,7 @@ export const loadUser = () => async (dispatch, getState) => {
 };
 
 //login user
-export const login = (email, password) => async dispatch => {
+export const login = (username, password) => async dispatch => {
     //headers
     const config = {
         headers : {
@@ -43,14 +43,11 @@ export const login = (email, password) => async dispatch => {
     };
 
     //Request body
-    const body = JSON.stringify({ email, password });
+    const body = JSON.stringify({ username, password });
+    console.log(body);
 
     try {
-        const response = await resultsAPI.post(
-            "auth/token/login/",
-            body,
-            config
-        );
+        const response = await resultsAPI.post("token/login/", body, config);
 
         dispatch({
             type    : LOGIN_SUCCESS,
@@ -78,7 +75,7 @@ export const register = details => async dispatch => {
     // console.log(body);
 
     try {
-        const response = await resultsAPI.post("auth/users/", body, config);
+        const response = await resultsAPI.post("users/", body, config);
 
         dispatch({
             type : REGISTER_SUCCESS,
@@ -96,7 +93,7 @@ export const register = details => async dispatch => {
 export const logout = () => async (dispatch, getState) => {
     try {
         const response = await resultsAPI.post(
-            "auth/token/logout/",
+            "token/logout/",
             null,
             tokenConfig(getState)
         );

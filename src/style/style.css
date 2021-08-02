@@ -347,6 +347,9 @@
 .nav__link {
   color: #000;
   text-decoration: none;
+  border: none;
+  outline: none;
+  background: none;
   text-transform: uppercase;
   font-family: "Open Sans Condensed", sans-serif;
   font-size: 1.5rem;
@@ -354,6 +357,7 @@
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   position: relative;
+  cursor: pointer;
 }
 
 .nav__link:last-child {

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 function LoginForm({ Login, error }) {
-    const [ details, setDetails ] = useState({ email: "", password: "" });
+    const [ details, setDetails ] = useState({ username: "", password: "" });
 
     const submitHandler = e => {
         e.preventDefault();
@@ -19,17 +19,17 @@ function LoginForm({ Login, error }) {
                 ""
             )}
             <div className="form__group">
-                <label className="form__group__label" htmlFor="form-email">
-                    Email:
+                <label className="form__group__label" htmlFor="form-username">
+                    Username
                 </label>
                 <input
                     className="form__group__input"
-                    type="email"
-                    name="email"
-                    id="email"
+                    type="text"
+                    name="username"
+                    id="username"
                     onChange={e =>
-                        setDetails({ ...details, email: e.target.value })}
-                    value={details.email}
+                        setDetails({ ...details, username: e.target.value })}
+                    value={details.username}
                 />
             </div>
             <div className="form__group">

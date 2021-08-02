@@ -17,8 +17,8 @@ const Login = ({ login, errorMessage, isAuthenticated }) => {
         [ errorMessage ]
     );
 
-    const Login = ({ email, password }) => {
-        login(email, password);
+    const Login = ({ username, password }) => {
+        login(username, password);
     };
 
     return (
