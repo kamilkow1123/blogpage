@@ -37,7 +37,9 @@ function RegisterForm({ Register, errors }) {
                         })}
                     value={details.username}
                 />
-                {errors.username && <p>{errors.username}</p>}
+                {errors.username && (
+                    <p className="form__error-register">{errors.username}</p>
+                )}
             </div>
             <div className="form__group">
                 <label className="form__group__label" htmlFor="email">
@@ -52,7 +54,9 @@ function RegisterForm({ Register, errors }) {
                         setDetails({ ...details, email: e.target.value })}
                     value={details.email}
                 />
-                {errors.email && <p>{errors.email}</p>}
+                {errors.email && (
+                    <p className="form__error-register">{errors.email}</p>
+                )}
             </div>
             <div className="form__group">
                 <label className="form__group__label" htmlFor="first_name">
@@ -70,7 +74,9 @@ function RegisterForm({ Register, errors }) {
                         })}
                     value={details.first_name}
                 />
-                {errors.first_name && <p>{errors.first_name}</p>}
+                {errors.first_name && (
+                    <p className="form__error-register">{errors.first_name}</p>
+                )}
             </div>
             <div className="form__group">
                 <label className="form__group__label" htmlFor="last_name">
@@ -88,7 +94,9 @@ function RegisterForm({ Register, errors }) {
                         })}
                     value={details.last_name}
                 />
-                {errors.last_name && <p>{errors.last_name}</p>}
+                {errors.last_name && (
+                    <p className="form__error-register">{errors.last_name}</p>
+                )}
             </div>
             <div className="form__group">
                 <label className="form__group__label" htmlFor="phone">
@@ -103,7 +111,9 @@ function RegisterForm({ Register, errors }) {
                         setDetails({ ...details, phone: e.target.value })}
                     value={details.phone}
                 />
-                {errors.phone && <p>{errors.phone}</p>}
+                {errors.phone && (
+                    <p className="form__error-register">{errors.phone}</p>
+                )}
             </div>
             <div className="form__group">
                 <label className="form__group__label" htmlFor="password">
@@ -121,7 +131,9 @@ function RegisterForm({ Register, errors }) {
                         })}
                     value={details.password}
                 />
-                {errors.password && <p>{errors.password}</p>}
+                {errors.password && (
+                    <p className="form__error-register">{errors.password}</p>
+                )}
             </div>
             <div className="form__group">
                 <label className="form__group__label" htmlFor="re_password">
@@ -139,7 +151,9 @@ function RegisterForm({ Register, errors }) {
                         })}
                     value={details.re_password}
                 />
-                {errors.re_password && <p>{errors.re_password}</p>}
+                {errors.re_password && (
+                    <p className="form__error-register">{errors.re_password}</p>
+                )}
             </div>
             <input
                 type="submit"

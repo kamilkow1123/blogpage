@@ -8,6 +8,7 @@ import Login from "./components/accounts/Login";
 import Register from "./components/accounts/Register";
 import { loadUser } from "./actions/auth";
 import { connect } from "react-redux";
+import history from "./history";
 
 const App = ({ loadUser }) => {
     useEffect(() => {
@@ -15,7 +16,7 @@ const App = ({ loadUser }) => {
     });
 
     return (
-        <Router>
+        <Router history={history}>
             <Switch>
                 <Route path="/" component={Home} exact />
                 <Route path="/post/:id" children={<Post />} />

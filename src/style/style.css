@@ -765,6 +765,11 @@
   letter-spacing: 1px;
 }
 
+.form__error-register {
+  margin-top: 3px;
+  color: #ff365f;
+}
+
 .form__group {
   display: -webkit-box;
   display: -ms-flexbox;

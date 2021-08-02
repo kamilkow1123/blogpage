@@ -9,6 +9,7 @@ import {
     REGISTER_FAIL,
 } from "./types";
 import resultsAPI from "../apis/resultsAPI";
+import history from "../history";
 
 //check token & load user
 export const loadUser = () => async (dispatch, getState) => {
@@ -72,7 +73,6 @@ export const register = details => async dispatch => {
 
     //Request body
     const body = JSON.stringify(details);
-    // console.log(body);
 
     try {
         const response = await resultsAPI.post("users/", body, config);
@@ -80,6 +80,7 @@ export const register = details => async dispatch => {
         dispatch({
             type : REGISTER_SUCCESS,
         });
+        history.push("/login");
     } catch (err) {
         console.log(err.response.data);
         dispatch({

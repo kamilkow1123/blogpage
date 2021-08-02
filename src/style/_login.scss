@@ -57,6 +57,11 @@
         letter-spacing: 1px;
     }
 
+    &__error-register {
+        margin-top: 3px;
+        color: $accent;
+    }
+
     &__group {
         display: flex;
         flex-direction: column;

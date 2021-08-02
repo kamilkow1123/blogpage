@@ -11,11 +11,11 @@ const Register = ({ errorMessage, isAuthenticated, register }) => {
     useEffect(
         () => {
             if (errorMessage !== "") {
-                console.log(errorMessage);
+                // console.log(errorMessage);
                 let tempErrors = {};
 
                 for (let newError in errorMessage) {
-                    console.log(errorMessage[newError]);
+                    // console.log(errorMessage[newError]);
                     if (newError === "re_password")
                         tempErrors[newError] = `Password is required`;
                     else
