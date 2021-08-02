@@ -24,22 +24,6 @@
         color: $dark;
     }
 
-    &__author {
-        width: max-content;
-        position: relative;
-        color: $dark;
-
-        &::after {
-            content: '';
-            position: absolute;
-            height: 4px;
-            width: 100%;
-            background-color: $accent;
-            bottom: -15px;
-            left: 0;
-        }
-    }
-
     &__wrapper {
         margin: 1rem;
         display: flex;
@@ -117,6 +101,7 @@
         width: max-content;
         position: relative;
         color: $dark;
+        margin-bottom: 3rem;
 
         &::after {
             content: '';
@@ -124,7 +109,7 @@
             height: 2px;
             width: 50%;
             background-color: $accent;
-            bottom: -15px;
+            bottom: -10px;
             left: 0;
         }
     }

@@ -47,7 +47,7 @@ const Post = ({
             return (
                 <div key={comment.id} className="comment">
                     <div className="comment__wrapper">
-                        <h3 className="comment__title">{comment.name}</h3>
+                        <h3 className="comment__title">{comment.content}</h3>
                         <div
                             className="comment__fav"
                             onClick={() => toggleCommentFav(comment.id)}
@@ -59,10 +59,12 @@ const Post = ({
                             )}
                         </div>
                     </div>
-                    <h4 className="comment__author">by {comment.email}</h4>
-                    <div className="comment__body">
+                    <h4 className="comment__author">
+                        by {comment.author.username}
+                    </h4>
+                    {/* <div className="comment__body">
                         <p>{comment.body}</p>
-                    </div>
+                    </div> */}
                 </div>
             );
         });
@@ -95,8 +97,8 @@ const Post = ({
                 <div className="post">
                     <div className="post__cover">
                         <h1 className="post__title">{post.title}</h1>
-                        <div className="post__author">
-                            <AuthorHeader userId={post.userId} />
+                        <div>
+                            <AuthorHeader username={post.author.username} />
                         </div>
                     </div>
                     <div className="post__wrapper">
@@ -109,56 +111,7 @@ const Post = ({
                         </div>
                     </div>
                     <div className="post__body">
-                        <p>
-                            {post.body}
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Dolorem recusandae sed hic dolorum, numquam
-                            eveniet, inventore neque earum sit dignissimos non
-                            debitis minus. Eligendi recusandae incidunt
-                            reprehenderit temporibus, architecto dolore? Nulla
-                            est ex aliquid, recusandae soluta mollitia sint
-                            distinctio amet eligendi maxime? Tempore culpa
-                            numquam quos non vitae nulla, praesentium molestiae
-                            quam ipsum facilis commodi. Facilis nobis
-                            accusantium alias minima. Nulla in voluptatibus
-                            voluptatum dicta perferendis corrupti vitae! Odit,
-                            ex facere nostrum explicabo corrupti expedita, ipsa
-                            reiciendis assumenda deserunt dolor corporis aperiam
-                            omnis, maxime quia quae commodi modi adipisci porro.
-                            Doloribus libero, maiores molestiae eum nemo amet
-                            obcaecati facere voluptatum nobis eaque mollitia
-                            consectetur quos quam repudiandae commodi at
-                            pariatur praesentium voluptatibus? Accusamus
-                            laudantium illum tempora ullam reprehenderit. Est,
-                            nemo? Labore, iure architecto ipsum libero,
-                            repudiandae repellendus, voluptatem totam aspernatur
-                            natus dolorum quaerat ut reiciendis consequuntur
-                            culpa. Ut dolore harum error ipsam fugit omnis
-                            corrupti repellat reprehenderit, assumenda autem
-                            necessitatibus! Aliquid, ex optio? Quam deleniti,
-                            nobis maiores ad assumenda eveniet ex magnam unde
-                            voluptatibus obcaecati, beatae odio asperiores. Quis
-                            velit cum quod suscipit explicabo nisi autem dolore
-                            hic, ipsam incidunt. Dignissimos, voluptatum
-                            quibusdam dolorum id nobis aperiam cumque amet,
-                            alias officiis harum suscipit nulla doloremque
-                            libero optio consequatur ipsam nam eos modi eveniet
-                            officia quo. Itaque recusandae fugit nemo deserunt!
-                            Veritatis quasi doloremque illo blanditiis! Fugiat
-                            ex perferendis sit veniam itaque ipsa distinctio
-                            laudantium eaque neque commodi voluptatibus aliquam,
-                            incidunt dolorem fuga blanditiis adipisci molestias
-                            repellat sunt, aliquid modi aspernatur? Nisi ullam
-                            nam sint architecto laudantium cumque cupiditate
-                            atque totam recusandae facere! Doloribus,
-                            reprehenderit sapiente animi nisi alias excepturi,
-                            voluptate explicabo, maiores debitis odit ex ipsam
-                            aliquid obcaecati pariatur quas! Reiciendis ut quis
-                            in facilis quibusdam dolores cupiditate blanditiis,
-                            quasi dolorum error doloremque aperiam laboriosam
-                            adipisci. Voluptatibus fuga libero atque reiciendis
-                            consequatur nemo, dolore qui magni nam.
-                        </p>
+                        <p>{post.content}</p>
                     </div>
                     <div className="post__links">
                         <Link
@@ -176,7 +129,7 @@ const Post = ({
                         <Link
                             to={`/post/${parseInt(id) + 1}`}
                             style={{
-                                visibility : `${parseInt(id) < 100
+                                visibility : `${parseInt(id) < 5
                                     ? "visible"
                                     : "hidden"}`,
                             }}

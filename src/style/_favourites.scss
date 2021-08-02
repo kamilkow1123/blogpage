@@ -103,7 +103,7 @@
         margin: 0.5rem;
         width: max-content;
         transition: all 0.4s ease-in-out;
-        color: gray;
+        color: $grey;
 
         &:hover {
             background: $light;
@@ -173,7 +173,7 @@
         margin: 0.5rem;
         width: max-content;
         transition: all 0.4s ease-in-out;
-        color: gray;
+        color: $grey;
 
         &:hover {
             background: $light;

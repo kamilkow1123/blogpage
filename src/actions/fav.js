@@ -25,13 +25,13 @@ export const removeCommentFromFav = commentId => dispatch => {
 };
 
 export const fetchFavPost = postId => async dispatch => {
-    const response = await jsonPlaceholder.get(`/posts/${postId}`);
+    const response = await jsonPlaceholder.get(`/post/${postId}`);
 
-    dispatch({ type: FETCH_FAV_POST, payload: response.data });
+    dispatch({ type: FETCH_FAV_POST, payload: response.data.post });
 };
 
 export const fetchFavComment = commentId => async dispatch => {
-    const response = await jsonPlaceholder.get(`/comments/${commentId}`);
+    const response = await jsonPlaceholder.get(`/comment/${commentId}`);
 
-    dispatch({ type: FETCH_FAV_COMMENT, payload: response.data });
+    dispatch({ type: FETCH_FAV_COMMENT, payload: response.data.comment });
 };
