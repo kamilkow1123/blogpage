@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, Redirect } from "react-router-dom";
 import { fetchComments } from "../actions/comments";
 import { fetchPost } from "../actions/posts";
 import {
@@ -9,7 +9,6 @@ import {
     removePostFromFav,
     removeCommentFromFav,
 } from "../actions/fav";
-
 import AuthorHeader from "./AuthorHeader";
 import Navbar from "./Navbar";
 import {
@@ -19,6 +18,7 @@ import {
     FaAngleDoubleRight,
 } from "react-icons/fa";
 import ScrollToTop from "../ScrollToTop";
+import history from "../history";
 
 const Post = ({
     fetchPost,
@@ -32,6 +32,7 @@ const Post = ({
     favPostsIds,
     favCommentsIds,
     numOfPosts,
+    isAuthenticated,
 }) => {
     const { id } = useParams();
 
@@ -75,18 +76,26 @@ const Post = ({
     const togglePostFav = () => {
         const postId = parseInt(id);
 
-        if (post.favorited) {
-            removePostFromFav(postId);
+        if (isAuthenticated) {
+            if (post.favorited) {
+                removePostFromFav(postId);
+            } else {
+                addPostToFav(postId);
+            }
         } else {
-            addPostToFav(postId);
+            history.push("/login");
         }
     };
 
     const toggleCommentFav = (isFav, commentId) => {
-        if (isFav) {
-            removeCommentFromFav(commentId);
+        if (isAuthenticated) {
+            if (isFav) {
+                removeCommentFromFav(commentId);
+            } else {
+                addCommentToFav(commentId);
+            }
         } else {
-            addCommentToFav(commentId);
+            history.push("/login");
         }
     };
 
@@ -152,11 +161,12 @@ const Post = ({
 
 const mapStateToProps = state => {
     return {
-        post           : state.posts.currentPost,
-        comments       : state.comments.currentComments,
-        favPostsIds    : state.posts.favouritePostsIds,
-        favCommentsIds : state.comments.favouriteCommentsIds,
-        numOfPosts     : state.posts.numOfPosts,
+        post            : state.posts.currentPost,
+        comments        : state.comments.currentComments,
+        favPostsIds     : state.posts.favouritePostsIds,
+        favCommentsIds  : state.comments.favouriteCommentsIds,
+        numOfPosts      : state.posts.numOfPosts,
+        isAuthenticated : state.auth.isAuthenticated,
     };
 };
 
