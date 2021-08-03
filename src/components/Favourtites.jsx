@@ -6,39 +6,35 @@ import AuthorHeader from "./AuthorHeader";
 import {
     removePostFromFav,
     removeCommentFromFav,
-    fetchFavPost,
-    fetchFavComment,
+    fetchFavPosts,
+    fetchFavComments,
 } from "../actions/fav";
+import { loadUser } from "../actions/auth";
 import ScrollToTop from "../ScrollToTop";
 import { FaTrash } from "react-icons/fa";
 
 const Favourtites = ({
-    fetchFavPost,
-    fetchFavComment,
+    fetchFavPosts,
+    fetchFavComments,
     favPosts,
     favComments,
     favPostsIds,
     favCommentsIds,
     removePostFromFav,
     removeCommentFromFav,
+    user,
+    loadUser,
 }) => {
     useEffect(
         () => {
-            for (const postId of favPostsIds) {
-                if (favPosts.some(post => post.id === postId)) {
-                    continue;
-                }
-                fetchFavPost(postId);
-            }
-
-            for (const commentId of favCommentsIds) {
-                if (favComments.some(comment => comment.id === commentId)) {
-                    continue;
-                }
-                fetchFavComment(commentId);
+            if (user) {
+                fetchFavPosts(user.username);
+                fetchFavComments(user.username);
+            } else {
+                loadUser();
             }
         },
-        [ favPostsIds, favCommentsIds, fetchFavPost, fetchFavComment ]
+        [ favPostsIds, favCommentsIds, fetchFavPosts, fetchFavComments, user ]
     );
 
     const renderFavPosts = () => {
@@ -48,8 +44,9 @@ const Favourtites = ({
                     <div>
                         <h2 className="fav-post__title">{post.title}</h2>
                         <div className="fav-post__author">
-                            <AuthorHeader userId={post.userId} />
+                            <AuthorHeader username={post.author.username} />
                         </div>
+                        <div>{post.description}</div>
                     </div>
                     <div className="fav-post__buttons">
                         <Link
@@ -74,10 +71,12 @@ const Favourtites = ({
         return favComments.map(comment => {
             return (
                 <div key={comment.id} className="fav-comment">
-                    <h3 className="fav-comment__title">{comment.name}</h3>
-                    <h4 className="fav-comment__author">by {comment.email}</h4>
+                    {/* <h3 className="fav-comment__title">{comment.name}</h3> */}
+                    <h4 className="fav-comment__author">
+                        by {comment.author.username}
+                    </h4>
                     <div className="fav-comment__body">
-                        <p>{comment.body}</p>
+                        <p>{comment.content}</p>
                     </div>
                     <div className="fav-comment__buttons">
                         <Link
@@ -129,12 +128,14 @@ const mapStateToProps = state => {
         favCommentsIds : state.comments.favouriteCommentsIds,
         favPosts       : state.posts.favouritePosts,
         favComments    : state.comments.favouriteComments,
+        user           : state.auth.user,
     };
 };
 
 export default connect(mapStateToProps, {
     removePostFromFav,
     removeCommentFromFav,
-    fetchFavPost,
-    fetchFavComment,
+    fetchFavPosts,
+    fetchFavComments,
+    loadUser,
 })(Favourtites);

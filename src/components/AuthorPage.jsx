@@ -4,7 +4,6 @@ import { fetchUser } from "../actions/users";
 
 class AuthorPage extends React.Component {
     componentDidMount() {
-        console.log(this.props);
         this.props.fetchUser(this.props.match.params.username);
     }
 
@@ -19,7 +18,6 @@ class AuthorPage extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    console.log(ownProps);
     return {
         user : state.users.find(
             user => user.username === ownProps.match.params.username

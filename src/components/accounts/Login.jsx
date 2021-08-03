@@ -44,6 +44,7 @@ const mapStateToProps = state => {
     return {
         isAuthenticated : state.auth.isAuthenticated,
         errorMessage    : state.auth.error,
+        user            : state.auth.user,
     };
 };
 

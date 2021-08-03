@@ -11,27 +11,33 @@ import { loadUser } from "./actions/auth";
 import { connect } from "react-redux";
 import history from "./history";
 
-const App = ({ loadUser }) => {
-    useEffect(() => {
-        loadUser();
-    });
+class App extends React.Component {
+    componentDidMount() {
+        this.props.loadUser();
+    }
 
-    return (
-        <Router history={history}>
-            <Switch>
-                <Route path="/" component={Home} exact />
-                <Route path="/post/:id" children={<Post />} />
-                <PrivateRoute
-                    path="/favourites"
-                    component={Favourtites}
-                    exact
-                />
-                <Route path="/login" component={Login} exact />
-                <Route path="/register" component={Register} exact />
-                <Route path="/author/:username" component={AuthorPage} exact />
-            </Switch>
-        </Router>
-    );
-};
+    render() {
+        return (
+            <Router history={history}>
+                <Switch>
+                    <Route path="/" component={Home} exact />
+                    <Route path="/post/:id" children={<Post />} />
+                    <PrivateRoute
+                        path="/favourites"
+                        component={Favourtites}
+                        exact
+                    />
+                    <Route path="/login" component={Login} exact />
+                    <Route path="/register" component={Register} exact />
+                    <Route
+                        path="/author/:username"
+                        component={AuthorPage}
+                        exact
+                    />
+                </Switch>
+            </Router>
+        );
+    }
+}
 
 export default connect(null, { loadUser })(App);

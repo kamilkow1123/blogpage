@@ -1,6 +1,6 @@
 import {
     FETCH_COMMENTS,
-    FETCH_FAV_COMMENT,
+    FETCH_FAV_COMMENTS,
     ADD_COMMENT_TO_FAV,
     REMOVE_COMMENT_FROM_FAV,
 } from "../actions/types";
@@ -20,13 +20,10 @@ const commentsReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case FETCH_COMMENTS:
             return { ...state, currentComments: action.payload };
-        case FETCH_FAV_COMMENT:
+        case FETCH_FAV_COMMENTS:
             return {
                 ...state,
-                favouriteComments : [
-                    ...state.favouriteComments,
-                    action.payload,
-                ],
+                favouriteComments : action.payload,
             };
         case ADD_COMMENT_TO_FAV:
             // localStorage.setItem(

@@ -1,17 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PostsList from "./PostsList";
 import Navbar from "./Navbar";
-import { loadUser } from "../actions/auth";
-import { connect } from "react-redux";
 
-const Home = ({ user, loadUser }) => {
-    useEffect(
-        () => {
-            if (!user) loadUser();
-        },
-        [ user, loadUser ]
-    );
-
+const Home = () => {
     return (
         <div>
             <Navbar />
@@ -23,8 +14,4 @@ const Home = ({ user, loadUser }) => {
     );
 };
 
-const mapStateToProps = state => {
-    return { user: state.auth.user };
-};
-
-export default connect(mapStateToProps, { loadUser })(Home);
+export default Home;

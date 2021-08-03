@@ -22,6 +22,8 @@ export const loadUser = () => async (dispatch, getState) => {
             tokenConfig(getState)
         );
 
+        console.log(response);
+
         dispatch({
             type    : USER_LOADED,
             payload : response.data,

@@ -3,7 +3,7 @@ import {
     FETCH_POST,
     ADD_POST_TO_FAV,
     REMOVE_POST_FROM_FAV,
-    FETCH_FAV_POST,
+    FETCH_FAV_POSTS,
 } from "../actions/types";
 
 const INITIAL_STATE = {
@@ -22,15 +22,15 @@ const postsReducer = (state = INITIAL_STATE, action) => {
         case FETCH_POSTS:
             return {
                 ...state,
-                listOfPosts: action.payload.posts,
-                numOfPosts: action.payload.postsCount,
+                listOfPosts : action.payload.posts,
+                numOfPosts  : action.payload.postsCount,
             };
         case FETCH_POST:
             return { ...state, currentPost: action.payload };
-        case FETCH_FAV_POST:
+        case FETCH_FAV_POSTS:
             return {
                 ...state,
-                favouritePosts : [ ...state.favouritePosts, action.payload ],
+                favouritePosts : action.payload,
             };
         case ADD_POST_TO_FAV:
             // localStorage.setItem(

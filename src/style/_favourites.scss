@@ -91,10 +91,6 @@
         display: flex;
         align-items: flex-end;
         justify-content: space-between;
-
-        @include tablet {
-            flex-direction: row;
-        }
     }
 
     &__fav {
@@ -161,10 +157,7 @@
         display: flex;
         align-items: flex-end;
         justify-content: space-between;
-
-        @include tablet {
-            flex-direction: row;
-        }
+        margin-top: 1rem;
     }
 
     &__fav {
