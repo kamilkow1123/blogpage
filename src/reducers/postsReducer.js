@@ -9,9 +9,10 @@ import {
 const INITIAL_STATE = {
     listOfPosts       : [],
     currentPost       : null,
-    favouritePostsIds : JSON.parse(localStorage.getItem("favouritePostsIds"))
-        ? JSON.parse(localStorage.getItem("favouritePostsIds"))
-        : [],
+    // favouritePostsIds : JSON.parse(localStorage.getItem("favouritePostsIds"))
+    //     ? JSON.parse(localStorage.getItem("favouritePostsIds"))
+    //     : [],
+    favouritePostsIds : [],
     favouritePosts    : [],
 };
 
@@ -27,10 +28,10 @@ const postsReducer = (state = INITIAL_STATE, action) => {
                 favouritePosts : [ ...state.favouritePosts, action.payload ],
             };
         case ADD_POST_TO_FAV:
-            localStorage.setItem(
-                "favouritePostsIds",
-                JSON.stringify([ ...state.favouritePostsIds, action.payload ])
-            );
+            // localStorage.setItem(
+            //     "favouritePostsIds",
+            //     JSON.stringify([ ...state.favouritePostsIds, action.payload ])
+            // );
             return {
                 ...state,
                 favouritePostsIds : [
@@ -39,14 +40,15 @@ const postsReducer = (state = INITIAL_STATE, action) => {
                 ],
             };
         case REMOVE_POST_FROM_FAV:
-            localStorage.setItem(
-                "favouritePostsIds",
-                JSON.stringify(
-                    state.favouritePostsIds.filter(
-                        postId => postId !== action.payload
-                    )
-                )
-            );
+            // localStorage.setItem(
+            //     "favouritePostsIds",
+            //     JSON.stringify(
+            //         state.favouritePostsIds.filter(
+            //             postId => postId !== action.payload
+            //         )
+            //     )
+            // );
+
             return {
                 ...state,
                 favouritePostsIds : state.favouritePostsIds.filter(

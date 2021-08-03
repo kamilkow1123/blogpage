@@ -7,11 +7,12 @@ import {
 
 const INITIAL_STATE = {
     currentComments      : [],
-    favouriteCommentsIds : JSON.parse(
-        localStorage.getItem("favouriteCommentsIds")
-    )
-        ? JSON.parse(localStorage.getItem("favouriteCommentsIds"))
-        : [],
+    // favouriteCommentsIds : JSON.parse(
+    //     localStorage.getItem("favouriteCommentsIds")
+    // )
+    //     ? JSON.parse(localStorage.getItem("favouriteCommentsIds"))
+    //     : [],
+    favouriteCommentsIds : [],
     favouriteComments    : [],
 };
 
@@ -28,13 +29,13 @@ const commentsReducer = (state = INITIAL_STATE, action) => {
                 ],
             };
         case ADD_COMMENT_TO_FAV:
-            localStorage.setItem(
-                "favouriteCommentsIds",
-                JSON.stringify([
-                    ...state.favouriteCommentsIds,
-                    action.payload,
-                ])
-            );
+            // localStorage.setItem(
+            //     "favouriteCommentsIds",
+            //     JSON.stringify([
+            //         ...state.favouriteCommentsIds,
+            //         action.payload,
+            //     ])
+            // );
             return {
                 ...state,
                 favouriteCommentsIds : [
@@ -43,14 +44,14 @@ const commentsReducer = (state = INITIAL_STATE, action) => {
                 ],
             };
         case REMOVE_COMMENT_FROM_FAV:
-            localStorage.setItem(
-                "favouriteCommentsIds",
-                JSON.stringify(
-                    state.favouriteCommentsIds.filter(
-                        commentId => commentId !== action.payload
-                    )
-                )
-            );
+            // localStorage.setItem(
+            //     "favouriteCommentsIds",
+            //     JSON.stringify(
+            //         state.favouriteCommentsIds.filter(
+            //             commentId => commentId !== action.payload
+            //         )
+            //     )
+            // );
             return {
                 ...state,
                 favouriteCommentsIds : state.favouriteCommentsIds.filter(

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { fetchComments } from "../actions/comments";
@@ -27,10 +27,10 @@ const Post = ({
     comments,
     addPostToFav,
     addCommentToFav,
-    favPostsIds,
-    favCommentsIds,
     removePostFromFav,
     removeCommentFromFav,
+    favPostsIds,
+    favCommentsIds,
 }) => {
     const { id } = useParams();
 
@@ -39,7 +39,7 @@ const Post = ({
             fetchPost(id);
             fetchComments(id);
         },
-        [ id, fetchPost, fetchComments ]
+        [ id, fetchPost, fetchComments, favPostsIds, favCommentsIds ]
     );
 
     const renderComments = () => {
@@ -50,9 +50,10 @@ const Post = ({
                         <h3 className="comment__title">{comment.content}</h3>
                         <div
                             className="comment__fav"
-                            onClick={() => toggleCommentFav(comment.id)}
+                            onClick={() =>
+                                toggleCommentFav(comment.favorited, comment.id)}
                         >
-                            {favCommentsIds.includes(comment.id) ? (
+                            {comment.favorited ? (
                                 <FaHeart style={{ color: "#ff365f" }} />
                             ) : (
                                 <FaRegHeart />
@@ -72,15 +73,16 @@ const Post = ({
 
     const togglePostFav = () => {
         const postId = parseInt(id);
-        if (favPostsIds.includes(postId)) {
+
+        if (post.favorited) {
             removePostFromFav(postId);
         } else {
             addPostToFav(postId);
         }
     };
 
-    const toggleCommentFav = commentId => {
-        if (favCommentsIds.includes(commentId)) {
+    const toggleCommentFav = (isFav, commentId) => {
+        if (isFav) {
             removeCommentFromFav(commentId);
         } else {
             addCommentToFav(commentId);
@@ -103,7 +105,7 @@ const Post = ({
                     </div>
                     <div className="post__wrapper">
                         <div className="post__fav" onClick={togglePostFav}>
-                            {favPostsIds.includes(parseInt(id)) ? (
+                            {post.favorited ? (
                                 <FaHeart style={{ color: "#ff365f" }} />
                             ) : (
                                 <FaRegHeart />
