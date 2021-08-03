@@ -127,9 +127,9 @@ const Post = ({
                     </div>
                     <div className="post__links">
                         <Link
-                            to={`/post/${parseInt(id) - 1}`}
+                            to={`/post/${post.previous_post_id}`}
                             style={{
-                                visibility : `${parseInt(id) > 1
+                                visibility : `${post.previous_post_id
                                     ? "visible"
                                     : "hidden"}`,
                             }}
@@ -139,9 +139,9 @@ const Post = ({
                             Previous Post
                         </Link>
                         <Link
-                            to={`/post/${parseInt(id) + 1}`}
+                            to={`/post/${post.next_post_id}`}
                             style={{
-                                visibility : `${parseInt(id) < numOfPosts
+                                visibility : `${post.next_post_id
                                     ? "visible"
                                     : "hidden"}`,
                             }}
