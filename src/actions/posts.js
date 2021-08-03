@@ -5,7 +5,7 @@ import { tokenConfig } from "./auth";
 export const fetchPosts = () => async (dispatch, getState) => {
     const response = await jsonPlaceholder.get("/post", tokenConfig(getState));
 
-    dispatch({ type: FETCH_POSTS, payload: response.data.posts });
+    dispatch({ type: FETCH_POSTS, payload: response.data });
 };
 
 export const fetchPost = id => async (dispatch, getState) => {

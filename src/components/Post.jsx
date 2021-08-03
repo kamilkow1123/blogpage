@@ -31,6 +31,7 @@ const Post = ({
     removeCommentFromFav,
     favPostsIds,
     favCommentsIds,
+    numOfPosts,
 }) => {
     const { id } = useParams();
 
@@ -131,7 +132,7 @@ const Post = ({
                         <Link
                             to={`/post/${parseInt(id) + 1}`}
                             style={{
-                                visibility : `${parseInt(id) < 5
+                                visibility : `${parseInt(id) < numOfPosts
                                     ? "visible"
                                     : "hidden"}`,
                             }}
@@ -155,6 +156,7 @@ const mapStateToProps = state => {
         comments       : state.comments.currentComments,
         favPostsIds    : state.posts.favouritePostsIds,
         favCommentsIds : state.comments.favouriteCommentsIds,
+        numOfPosts     : state.posts.numOfPosts,
     };
 };
 
