@@ -1,9 +1,9 @@
-import jsonPlaceholder from "../apis/resultsAPI";
+import resultsAPI from "../apis/resultsAPI";
 import { FETCH_COMMENTS } from "./types";
 import { tokenConfig } from "./auth";
 
 export const fetchComments = postId => async (dispatch, getState) => {
-    const response = await jsonPlaceholder.get(
+    const response = await resultsAPI.get(
         `/post/${postId}/comments`,
         tokenConfig(getState)
     );

@@ -1,6 +1,6 @@
 @import 'colors';
 
-.author {
+.author-header {
     padding: 0.5rem 0;
     display: "inline-block";
     position: relative;
@@ -19,4 +19,18 @@
         width: 100%;
         background-color: $accent;
     }
+}
+
+.author-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: $light;
+}
+
+.author {
+    width: 100%;
+    height: 100%;
+    max-width: 1000px;
+    margin: 0 20px;
 }

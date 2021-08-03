@@ -1,6 +1,7 @@
 import {
     FETCH_POSTS,
     FETCH_POST,
+    FETCH_AUTHORS_POSTS,
     ADD_POST_TO_FAV,
     REMOVE_POST_FROM_FAV,
     FETCH_FAV_POSTS,
@@ -15,6 +16,7 @@ const INITIAL_STATE = {
     //     : [],
     favouritePostsIds : [],
     favouritePosts    : [],
+    authorsPosts      : [],
 };
 
 const postsReducer = (state = INITIAL_STATE, action) => {
@@ -27,6 +29,8 @@ const postsReducer = (state = INITIAL_STATE, action) => {
             };
         case FETCH_POST:
             return { ...state, currentPost: action.payload };
+        case FETCH_AUTHORS_POSTS:
+            return { ...state, authorsPosts: action.payload };
         case FETCH_FAV_POSTS:
             return {
                 ...state,
