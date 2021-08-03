@@ -844,6 +844,8 @@
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
+  text-decoration: none;
+  color: #000;
 }
 
 .author::after {

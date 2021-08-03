@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchUser } from "../actions/users";
+import { Link } from "react-router-dom";
 
 const AuthorHeader = ({ username, fetchUser, user }) => {
     useEffect(
@@ -11,7 +12,9 @@ const AuthorHeader = ({ username, fetchUser, user }) => {
     );
 
     return !user ? null : (
-        <p className="author">by {`${user.first_name} ${user.last_name}`}</p>
+        <Link to={`/author/${username}`} className="author">
+            by {`${user.first_name} ${user.last_name}`}
+        </Link>
     );
 };
 

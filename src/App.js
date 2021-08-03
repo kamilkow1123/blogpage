@@ -6,6 +6,7 @@ import Post from "./components/Post";
 import PrivateRoute from "./components/PrivateRoute";
 import Login from "./components/accounts/Login";
 import Register from "./components/accounts/Register";
+import AuthorPage from "./components/AuthorPage";
 import { loadUser } from "./actions/auth";
 import { connect } from "react-redux";
 import history from "./history";
@@ -27,6 +28,7 @@ const App = ({ loadUser }) => {
                 />
                 <Route path="/login" component={Login} exact />
                 <Route path="/register" component={Register} exact />
+                <Route path="/author/:username" component={AuthorPage} exact />
             </Switch>
         </Router>
     );

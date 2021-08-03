@@ -10,7 +10,7 @@ import {
 import { tokenConfig } from "./auth";
 
 export const addPostToFav = postId => async (dispatch, getState) => {
-    const response = await jsonPlaceholder.post(
+    await jsonPlaceholder.post(
         `/post/${postId}/favorite`,
         null,
         tokenConfig(getState)
@@ -21,7 +21,7 @@ export const addPostToFav = postId => async (dispatch, getState) => {
 };
 
 export const addCommentToFav = commentId => async (dispatch, getState) => {
-    const response = await jsonPlaceholder.post(
+    await jsonPlaceholder.post(
         `/comment/${commentId}/favorite`,
         null,
         tokenConfig(getState)
@@ -32,7 +32,7 @@ export const addCommentToFav = commentId => async (dispatch, getState) => {
 };
 
 export const removePostFromFav = postId => async (dispatch, getState) => {
-    const response = await jsonPlaceholder.delete(
+    await jsonPlaceholder.delete(
         `/post/${postId}/favorite`,
         tokenConfig(getState)
     );
@@ -42,7 +42,7 @@ export const removePostFromFav = postId => async (dispatch, getState) => {
 };
 
 export const removeCommentFromFav = commentId => async (dispatch, getState) => {
-    const response = await jsonPlaceholder.delete(
+    await jsonPlaceholder.delete(
         `/comment/${commentId}/favorite`,
         tokenConfig(getState)
     );

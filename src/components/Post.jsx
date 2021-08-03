@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { useParams, Link, Redirect } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { fetchComments } from "../actions/comments";
 import { fetchPost } from "../actions/posts";
 import {

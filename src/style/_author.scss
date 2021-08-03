@@ -5,6 +5,8 @@
     display: "inline-block";
     position: relative;
     width: max-content;
+    text-decoration: none;
+    color: $dark;
 
     &::after {
         content: '';
