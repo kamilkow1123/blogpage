@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import Navbar from "../navigation/Navbar";
 import Sidebar from "../navigation/Sidebar";
 import PostForm from "./PostForm";
+import { connect } from "react-redux";
+import { createPost } from "../../actions/posts";
 
-const PostCreate = () => {
+const PostCreate = ({ createPost }) => {
     const [ isOpen, setIsOpen ] = useState(false);
 
     const toggle = () => {
@@ -11,7 +13,7 @@ const PostCreate = () => {
     };
 
     const onSubmit = formValues => {
-        console.log(formValues);
+        createPost(formValues);
     };
 
     return (
@@ -23,4 +25,4 @@ const PostCreate = () => {
     );
 };
 
-export default PostCreate;
+export default connect(null, { createPost })(PostCreate);
