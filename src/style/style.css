@@ -859,6 +859,42 @@
   margin: 0 20px;
 }
 
+.author__name {
+  text-transform: uppercase;
+  margin-top: 2rem;
+  font-family: "Open Sans Condensed", sans-serif;
+  font-size: 3rem;
+  letter-spacing: 2px;
+  color: #000;
+}
+
+.author__username {
+  font-family: "Open Sans Condensed", sans-serif;
+  color: #808080;
+}
+
+.author__photo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 2rem 0;
+}
+
+.author__bio {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  font-family: "Open Sans Condensed", sans-serif;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0.5rem 0;
+  position: relative;
+  z-index: 1;
+}
+
 .author__header {
   text-transform: uppercase;
   padding: 1.5rem 0;
@@ -866,6 +902,17 @@
   font-weight: 300;
   font-size: 2rem;
   letter-spacing: 3px;
+}
+
+.author__link {
+  margin: 0.6rem 0;
+  font-size: 1.1rem;
+  color: #000;
+  border-bottom: 2px solid #ff365f;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  letter-spacing: 1px;
 }
 
 .author__wrapper {

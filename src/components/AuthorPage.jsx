@@ -41,14 +41,25 @@ class AuthorPage extends React.Component {
                 <Navbar />
                 <div className="author-container">
                     <div className="author">
-                        <h1>{`${this.props.user.first_name} ${this.props.user
-                            .last_name}`}</h1>
-                        <div>{this.props.user.username}</div>
-                        <img src={this.props.user.imageURL} alt="author" />
-                        <div>{this.props.user.bio}</div>
-                        <div>{this.props.user.github_link}</div>
-                        <div>{this.props.user.linkedin_link}</div>
-                        <div>{this.props.user.facebook_link}</div>
+                        <h1 className="author__name">{`${this.props.user
+                            .first_name} ${this.props.user.last_name}`}</h1>
+                        <h2 className="author__username">
+                            {this.props.user.username}
+                        </h2>
+                        <div className="author__photo">
+                            <img src={this.props.user.imageURL} alt="author" />
+                        </div>
+                        <div className="author__bio">{this.props.user.bio}</div>
+                        <h2 className="author__header">social links</h2>
+                        <div className="author__link">
+                            {this.props.user.github_link}
+                        </div>
+                        <div className="author__link">
+                            {this.props.user.linkedin_link}
+                        </div>
+                        <div className="author__link">
+                            {this.props.user.facebook_link}
+                        </div>
                         <h2 className="author__header">
                             {this.props.user.first_name}'s posts
                         </h2>
