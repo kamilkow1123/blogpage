@@ -15,16 +15,16 @@ class AuthorPage extends React.Component {
     renderPosts = () => {
         return this.props.posts.map(post => {
             return (
-                <div key={post.id} className="author__post">
+                <div key={post.id} className="author-post">
                     <div>
-                        <h2 className="author__post__title">{post.title}</h2>
+                        <h2 className="author-post__title">{post.title}</h2>
 
                         <div>{post.description}</div>
                     </div>
-                    <div className="author__post__buttons">
+                    <div className="author-post__buttons">
                         <Link
                             to={`/post/${post.id}`}
-                            className="author__post__link"
+                            className="author-post__link"
                         >
                             View the post
                         </Link>
@@ -49,8 +49,12 @@ class AuthorPage extends React.Component {
                         <div>{this.props.user.github_link}</div>
                         <div>{this.props.user.linkedin_link}</div>
                         <div>{this.props.user.facebook_link}</div>
-                        <h2>Posts</h2>
-                        {this.renderPosts()}
+                        <h2 className="author__header">
+                            {this.props.user.first_name}'s posts
+                        </h2>
+                        <div className="author__wrapper">
+                            {this.renderPosts()}
+                        </div>
                     </div>
                 </div>
             </div>

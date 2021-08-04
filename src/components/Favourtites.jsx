@@ -34,7 +34,14 @@ const Favourtites = ({
                 loadUser();
             }
         },
-        [ favPostsIds, favCommentsIds, fetchFavPosts, fetchFavComments, user ]
+        [
+            favPostsIds,
+            favCommentsIds,
+            fetchFavPosts,
+            fetchFavComments,
+            user,
+            loadUser,
+        ]
     );
 
     const renderFavPosts = () => {

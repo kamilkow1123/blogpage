@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import Favourtites from "./components/Favourtites";
 import Home from "./components/Home";
