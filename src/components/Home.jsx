@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import PostsList from "./PostsList";
+import PostsList from "./posts/PostsList";
 import Navbar from "./Navbar";
 import { loadUser } from "../actions/auth";
 import { connect } from "react-redux";

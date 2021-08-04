@@ -1,24 +1,24 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { useParams, Link } from "react-router-dom";
-import { fetchComments } from "../actions/comments";
-import { fetchPost } from "../actions/posts";
+import { fetchComments } from "../../actions/comments";
+import { fetchPost } from "../../actions/posts";
 import {
     addPostToFav,
     addCommentToFav,
     removePostFromFav,
     removeCommentFromFav,
-} from "../actions/fav";
-import AuthorHeader from "./AuthorHeader";
-import Navbar from "./Navbar";
+} from "../../actions/fav";
+import AuthorHeader from "../AuthorHeader";
+import Navbar from "../Navbar";
 import {
     FaRegHeart,
     FaHeart,
     FaAngleDoubleLeft,
     FaAngleDoubleRight,
 } from "react-icons/fa";
-import ScrollToTop from "../ScrollToTop";
-import history from "../history";
+import ScrollToTop from "../../ScrollToTop";
+import history from "../../history";
 
 const Post = ({
     fetchPost,

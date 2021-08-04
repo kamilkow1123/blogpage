@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import Favourtites from "./components/Favourtites";
 import Home from "./components/Home";
-import Post from "./components/Post";
+import Post from "./components/posts/Post";
 import PrivateRoute from "./components/PrivateRoute";
 import Login from "./components/accounts/Login";
 import Register from "./components/accounts/Register";

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchPosts } from "../actions/posts";
-import AuthorHeader from "./AuthorHeader";
+import { fetchPosts } from "../../actions/posts";
+import AuthorHeader from "../AuthorHeader";
 import { Link } from "react-router-dom";
 
 const PostsList = ({ fetchPosts, posts }) => {

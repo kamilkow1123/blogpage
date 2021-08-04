@@ -359,6 +359,11 @@
   transition: all 0.3s ease-in-out;
   position: relative;
   cursor: pointer;
+  margin: 1rem;
+}
+
+.nav__link:first-child {
+  margin-left: 0;
 }
 
 .nav__link--logout {

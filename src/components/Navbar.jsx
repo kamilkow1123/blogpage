@@ -18,12 +18,17 @@ const Navbar = ({ auth, logout }) => {
                     ) : (
                         <div className="nav__user">
                             {auth.user && (
-                                <Link
-                                    className="nav__link"
-                                    to={`/${auth.user.username}`}
-                                >
-                                    Your profile
-                                </Link>
+                                <React.Fragment>
+                                    <Link className="nav__link" to="/post/new">
+                                        Add post
+                                    </Link>
+                                    <Link
+                                        className="nav__link"
+                                        to={`/${auth.user.username}`}
+                                    >
+                                        Your profile
+                                    </Link>
+                                </React.Fragment>
                             )}
                             <button
                                 className="nav__link--logout"

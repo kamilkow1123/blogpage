@@ -41,6 +41,11 @@
         transition: all 0.3s ease-in-out;
         position: relative;
         cursor: pointer;
+        margin: 1rem;
+
+        &:first-child {
+            margin-left: 0;
+        }
 
         &--logout {
             background: $accent;
