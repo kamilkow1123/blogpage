@@ -10,6 +10,7 @@ import AuthorPage from "./components/AuthorPage";
 import { loadUser } from "./actions/auth";
 import { connect } from "react-redux";
 import history from "./history";
+import PostCreate from "./components/posts/PostCreate";
 
 const App = ({ loadUser }) => {
     useEffect(() => {
@@ -21,6 +22,7 @@ const App = ({ loadUser }) => {
             <Switch>
                 <Route path="/" component={Home} exact />
                 <Route path="/post/:id" children={<Post />} />
+                <Route path="/new" component={PostCreate} exact />
                 <PrivateRoute
                     path="/favourites"
                     component={Favourtites}

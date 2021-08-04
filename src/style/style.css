@@ -327,22 +327,35 @@
   margin: 0 20px;
 }
 
-.nav__links {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+.nav__mobile-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #000;
 }
 
-.nav__user {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+@media (min-width: 768px) {
+  .nav__mobile-icon {
+    display: none;
+  }
+}
+
+.nav__menu {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .nav__menu {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    list-style: none;
+  }
 }
 
 .nav__link {
@@ -359,11 +372,15 @@
   transition: all 0.3s ease-in-out;
   position: relative;
   cursor: pointer;
-  margin: 1rem;
+  margin: 0 2rem;
 }
 
 .nav__link:first-child {
   margin-left: 0;
+}
+
+.nav__link--login {
+  margin: 0;
 }
 
 .nav__link--logout {
@@ -380,14 +397,8 @@
   cursor: pointer;
   padding: 0.2rem 0.5rem;
   border-radius: 5px;
-  margin-left: 1rem;
+  margin-left: 1.5rem;
   color: #fff;
-}
-
-@media (min-width: 768px) {
-  .nav__link--logout {
-    margin-left: 3rem;
-  }
 }
 
 .nav__link--logout:hover {

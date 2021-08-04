@@ -18,14 +18,25 @@
         margin: 0 20px;
     }
 
-    &__links {
-        display: flex;
+    &__mobile-icon {
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: $dark;
+
+        @include tablet {
+            display: none;
+        }
     }
 
-    &__user {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    &__menu {
+        display: none;
+
+        @include tablet {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            list-style: none;
+        }
     }
 
     &__link {
@@ -41,10 +52,14 @@
         transition: all 0.3s ease-in-out;
         position: relative;
         cursor: pointer;
-        margin: 1rem;
+        margin: 0 2rem;
 
         &:first-child {
             margin-left: 0;
+        }
+
+        &--login {
+            margin: 0;
         }
 
         &--logout {
@@ -60,12 +75,8 @@
             cursor: pointer;
             padding: 0.2rem 0.5rem;
             border-radius: 5px;
-            margin-left: 1rem;
+            margin-left: 1.5rem;
             color: $light;
-
-            @include tablet {
-                margin-left: 3rem;
-            }
 
             &:hover {
                 background: $light;
