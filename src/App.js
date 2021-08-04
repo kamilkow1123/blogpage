@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import Favourtites from "./components/Favourtites";
 import Home from "./components/Home";
@@ -11,33 +11,27 @@ import { loadUser } from "./actions/auth";
 import { connect } from "react-redux";
 import history from "./history";
 
-class App extends React.Component {
-    componentDidMount() {
-        this.props.loadUser();
-    }
+const App = ({ loadUser }) => {
+    useEffect(() => {
+        loadUser();
+    });
 
-    render() {
-        return (
-            <Router history={history}>
-                <Switch>
-                    <Route path="/" component={Home} exact />
-                    <Route path="/post/:id" children={<Post />} />
-                    <PrivateRoute
-                        path="/favourites"
-                        component={Favourtites}
-                        exact
-                    />
-                    <Route path="/login" component={Login} exact />
-                    <Route path="/register" component={Register} exact />
-                    <Route
-                        path="/author/:username"
-                        component={AuthorPage}
-                        exact
-                    />
-                </Switch>
-            </Router>
-        );
-    }
-}
+    return (
+        <Router history={history}>
+            <Switch>
+                <Route path="/" component={Home} exact />
+                <Route path="/post/:id" children={<Post />} />
+                <PrivateRoute
+                    path="/favourites"
+                    component={Favourtites}
+                    exact
+                />
+                <Route path="/login" component={Login} exact />
+                <Route path="/register" component={Register} exact />
+                <Route path="/:username" component={AuthorPage} exact />
+            </Switch>
+        </Router>
+    );
+};
 
 export default connect(null, { loadUser })(App);
