@@ -1,0 +1,53 @@
+@import 'colors';
+@import 'fonts';
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $light;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s ease-in-out;
+    transform: translateY(-110%);
+
+    &__close-icon {
+        font-size: 2rem;
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        color: $dark;
+        cursor: pointer;
+    }
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__link {
+        font-size: 2rem;
+        text-decoration: none;
+        list-style: none;
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        margin: 2rem 0;
+        text-align: center;
+        text-transform: uppercase;
+        font-family: $secondary-font;
+        letter-spacing: 2px;
+        font-weight: 300;
+
+        &:last-child {
+            background: $accent;
+            border-radius: 5px;
+            color: $light;
+        }
+    }
+}

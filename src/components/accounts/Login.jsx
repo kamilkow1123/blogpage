@@ -25,7 +25,10 @@ const Login = ({ login, errorMessage, isAuthenticated }) => {
         <div>
             {!isAuthenticated ? (
                 <div className="login">
-                    <Link to="/" className="login__back-button">
+                    <Link
+                        to="/"
+                        className="login__back-button login__back-button--top"
+                    >
                         <span>
                             <FaArrowLeft />
                         </span>{" "}

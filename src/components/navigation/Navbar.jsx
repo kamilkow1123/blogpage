@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { logout } from "../actions/auth";
+import { logout } from "../../actions/auth";
 import { FaBars } from "react-icons/fa";
 
 const Navbar = ({ auth, logout, toggle }) => {

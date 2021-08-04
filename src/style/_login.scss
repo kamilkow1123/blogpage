@@ -20,6 +20,11 @@
         align-self: flex-start;
         margin: 20px;
 
+        &--top {
+            position: absolute;
+            top: 10px;
+        }
+
         @include tablet {
             position: absolute;
             top: 30px;

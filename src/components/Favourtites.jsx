@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import Navbar from "./Navbar";
+import Navbar from "./navigation/Navbar";
+import Sidebar from "./navigation/Sidebar";
 import AuthorHeader from "./AuthorHeader";
 import {
     removePostFromFav,
@@ -25,6 +26,12 @@ const Favourtites = ({
     user,
     loadUser,
 }) => {
+    const [ isOpen, setIsOpen ] = useState(false);
+
+    const toggle = () => {
+        setIsOpen(!isOpen);
+    };
+
     useEffect(
         () => {
             if (user) {
@@ -115,7 +122,8 @@ const Favourtites = ({
     return (
         <div>
             <ScrollToTop />
-            <Navbar />
+            <Navbar toggle={toggle} />
+            <Sidebar toggle={toggle} isOpen={isOpen} />
             <div className="fav-container">
                 <div className="fav">
                     <h1 className="fav__title">Favourites</h1>

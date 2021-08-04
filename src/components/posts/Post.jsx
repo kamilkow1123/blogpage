@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { fetchComments } from "../../actions/comments";
@@ -10,7 +10,8 @@ import {
     removeCommentFromFav,
 } from "../../actions/fav";
 import AuthorHeader from "../AuthorHeader";
-import Navbar from "../Navbar";
+import Navbar from "../navigation/Navbar";
+import Sidebar from "../navigation/Sidebar";
 import {
     FaRegHeart,
     FaHeart,
@@ -31,10 +32,14 @@ const Post = ({
     removeCommentFromFav,
     favPostsIds,
     favCommentsIds,
-    numOfPosts,
     isAuthenticated,
 }) => {
     const { id } = useParams();
+    const [ isOpen, setIsOpen ] = useState(false);
+
+    const toggle = () => {
+        setIsOpen(!isOpen);
+    };
 
     useEffect(
         () => {
@@ -104,7 +109,8 @@ const Post = ({
     ) : (
         <div>
             <ScrollToTop />
-            <Navbar />
+            <Navbar toggle={toggle} />
+            <Sidebar toggle={toggle} isOpen={isOpen} />
             <div className="post-container">
                 <div className="post">
                     <div className="post__cover">
@@ -165,7 +171,6 @@ const mapStateToProps = state => {
         comments        : state.comments.currentComments,
         favPostsIds     : state.posts.favouritePostsIds,
         favCommentsIds  : state.comments.favouriteCommentsIds,
-        numOfPosts      : state.posts.numOfPosts,
         isAuthenticated : state.auth.isAuthenticated,
     };
 };

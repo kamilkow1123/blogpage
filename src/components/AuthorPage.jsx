@@ -2,11 +2,24 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchUser } from "../actions/users";
 import { fetchAuthorsPosts } from "../actions/posts";
-import Navbar from "./Navbar";
+import Navbar from "./navigation/Navbar";
+import Sidebar from "./navigation/Sidebar";
 import ScrollToTop from "../ScrollToTop";
 import { Link } from "react-router-dom";
 
 class AuthorPage extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isOpen : false,
+        };
+    }
+
+    toggle = () => {
+        this.setState({ isOpen: !this.state.isOpen });
+    };
+
     componentDidMount() {
         this.props.fetchUser(this.props.match.params.username);
         this.props.fetchAuthorsPosts(this.props.match.params.username);
@@ -46,7 +59,8 @@ class AuthorPage extends React.Component {
         return !this.props.user ? null : (
             <div>
                 <ScrollToTop />
-                <Navbar />
+                <Navbar toggle={this.toggle} />
+                <Sidebar toggle={this.toggle} isOpen={this.state.isOpen} />
                 <div className="author-container">
                     <div className="author">
                         <h1 className="author__name">{`${this.props.user
