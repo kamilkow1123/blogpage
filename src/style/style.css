@@ -932,6 +932,28 @@
   z-index: 1;
 }
 
+.author__fav-link {
+  display: block;
+  cursor: pointer;
+  background-color: #ff365f;
+  text-decoration: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  margin: 1.5rem 0;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  border: 2px solid #ff365f;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  border-radius: 5px;
+}
+
+.author__fav-link:hover {
+  background: #fff;
+  color: #ff365f;
+}
+
 .author__header {
   text-transform: uppercase;
   padding: 1.5rem 0;

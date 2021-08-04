@@ -12,6 +12,14 @@ class AuthorPage extends React.Component {
         this.props.fetchAuthorsPosts(this.props.match.params.username);
     }
 
+    componentDidUpdate(prevProps) {
+        if (
+            this.props.match.params.username !== prevProps.match.params.username
+        ) {
+            this.props.fetchAuthorsPosts(this.props.match.params.username);
+        }
+    }
+
     renderPosts = () => {
         return this.props.posts.map(post => {
             return (
@@ -50,6 +58,11 @@ class AuthorPage extends React.Component {
                             <img src={this.props.user.imageURL} alt="author" />
                         </div>
                         <div className="author__bio">{this.props.user.bio}</div>
+                        {this.props.isOwnProfile && (
+                            <Link to="/favourites" className="author__fav-link">
+                                Favourite Posts & Comments
+                            </Link>
+                        )}
                         <h2 className="author__header">social links</h2>
                         <div className="author__link">
                             {this.props.user.github_link}
@@ -75,10 +88,13 @@ class AuthorPage extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        user  : state.users.find(
+        user         : state.users.find(
             user => user.username === ownProps.match.params.username
         ),
-        posts : state.posts.authorsPosts,
+        posts        : state.posts.authorsPosts,
+        isOwnProfile : state.auth.user
+            ? ownProps.match.params.username === state.auth.user.username
+            : null,
     };
 };
 
