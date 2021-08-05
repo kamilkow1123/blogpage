@@ -616,6 +616,31 @@
   color: #000;
 }
 
+.comment__buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.comment__delete {
+  font-size: 1.3rem;
+  color: #808080;
+  cursor: pointer;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  margin: 0 0.5rem;
+}
+
+.comment__delete:hover {
+  color: #ff365f;
+}
+
 .comment__fav {
   font-size: 1.5rem;
   cursor: pointer;

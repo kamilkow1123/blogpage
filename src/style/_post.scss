@@ -90,6 +90,24 @@
         color: $dark;
     }
 
+    &__buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__delete {
+        font-size: 1.3rem;
+        color: $grey;
+        cursor: pointer;
+        transition: all 0.4s ease-in-out;
+        margin: 0 0.5rem;
+
+        &:hover {
+            color: $accent;
+        }
+    }
+
     &__fav {
         font-size: 1.5rem;
         cursor: pointer;

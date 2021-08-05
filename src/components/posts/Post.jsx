@@ -17,6 +17,7 @@ import {
     FaHeart,
     FaAngleDoubleLeft,
     FaAngleDoubleRight,
+    FaTrash,
 } from "react-icons/fa";
 import ScrollToTop from "../../ScrollToTop";
 import history from "../../history";
@@ -35,6 +36,7 @@ const Post = ({
     favCommentsIds,
     isAuthenticated,
     createComment,
+    username,
 }) => {
     const { id } = useParams();
     const [ isOpen, setIsOpen ] = useState(false);
@@ -57,16 +59,29 @@ const Post = ({
                 <div key={comment.id} className="comment">
                     <div className="comment__wrapper">
                         <h3 className="comment__title">{comment.content}</h3>
-                        <div
-                            className="comment__fav"
-                            onClick={() =>
-                                toggleCommentFav(comment.favorited, comment.id)}
-                        >
-                            {comment.favorited ? (
-                                <FaHeart style={{ color: "#ff365f" }} />
-                            ) : (
-                                <FaRegHeart />
+                        <div className="comment__buttons">
+                            {username === comment.author.username && (
+                                <div
+                                    className="comment__delete"
+                                    onClick={() => deleteComment(comment.id)}
+                                >
+                                    <FaTrash />
+                                </div>
                             )}
+                            <div
+                                className="comment__fav"
+                                onClick={() =>
+                                    toggleCommentFav(
+                                        comment.favorited,
+                                        comment.id
+                                    )}
+                            >
+                                {comment.favorited ? (
+                                    <FaHeart style={{ color: "#ff365f" }} />
+                                ) : (
+                                    <FaRegHeart />
+                                )}
+                            </div>
                         </div>
                     </div>
                     <h4 className="comment__author">
@@ -104,6 +119,10 @@ const Post = ({
         } else {
             history.push("/login");
         }
+    };
+
+    const deleteComment = commentId => {
+        console.log(commentId);
     };
 
     const onCommentSubmit = formValues => {
@@ -179,6 +198,7 @@ const mapStateToProps = state => {
         favPostsIds     : state.posts.favouritePostsIds,
         favCommentsIds  : state.comments.favouriteCommentsIds,
         isAuthenticated : state.auth.isAuthenticated,
+        username        : state.auth.user ? state.auth.user.username : null,
     };
 };
 
