@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useParams, Link } from "react-router-dom";
-import { fetchComments } from "../../actions/comments";
+import { fetchComments, createComment } from "../../actions/comments";
 import { fetchPost } from "../../actions/posts";
 import {
     addPostToFav,
@@ -20,6 +20,7 @@ import {
 } from "react-icons/fa";
 import ScrollToTop from "../../ScrollToTop";
 import history from "../../history";
+import CommentForm from "./CommentForm";
 
 const Post = ({
     fetchPost,
@@ -33,6 +34,7 @@ const Post = ({
     favPostsIds,
     favCommentsIds,
     isAuthenticated,
+    createComment,
 }) => {
     const { id } = useParams();
     const [ isOpen, setIsOpen ] = useState(false);
@@ -104,6 +106,10 @@ const Post = ({
         }
     };
 
+    const onCommentSubmit = formValues => {
+        createComment(formValues, id);
+    };
+
     return !post ? (
         <div>Loading...</div>
     ) : (
@@ -158,6 +164,7 @@ const Post = ({
                         </Link>
                     </div>
                     <h2 className="post__header">Comments</h2>
+                    <CommentForm onCommentSubmit={onCommentSubmit} />
                     {renderComments()}
                 </div>
             </div>
@@ -182,4 +189,5 @@ export default connect(mapStateToProps, {
     addCommentToFav,
     removePostFromFav,
     removeCommentFromFav,
+    createComment,
 })(Post);

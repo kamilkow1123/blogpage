@@ -40,7 +40,7 @@ export const fetchAuthorsPosts = username => async (dispatch, getState) => {
 };
 
 export const createPost = formValues => async (dispatch, getState) => {
-    const { config, body } = postConfig(getState, formValues);
+    const { config, body } = formConfig(getState, formValues);
 
     try {
         await resultsAPI.post("/post", body, config);
@@ -57,7 +57,7 @@ export const createPost = formValues => async (dispatch, getState) => {
 };
 
 export const editPost = (id, formValues) => async (dispatch, getState) => {
-    const { config, body } = postConfig(getState, formValues);
+    const { config, body } = formConfig(getState, formValues);
 
     try {
         await resultsAPI.patch(`/post/${id}`, body, config);
@@ -84,7 +84,7 @@ export const deletePost = id => async (dispatch, getState) => {
 };
 
 //setup config with token for post creation and editing
-export const postConfig = (getState, formValues) => {
+export const formConfig = (getState, formValues) => {
     //get token from state
     const token = getState().auth.auth_token;
 

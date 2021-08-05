@@ -3,6 +3,7 @@ import {
     FETCH_FAV_COMMENTS,
     ADD_COMMENT_TO_FAV,
     REMOVE_COMMENT_FROM_FAV,
+    CREATE_COMMENT,
 } from "../actions/types";
 
 const INITIAL_STATE = {
@@ -57,6 +58,12 @@ const commentsReducer = (state = INITIAL_STATE, action) => {
                 favouriteComments    : state.favouriteComments.filter(
                     comment => comment.id !== action.payload
                 ),
+            };
+
+        case CREATE_COMMENT:
+            return {
+                ...state,
+                currentComments : [ ...state.currentComments, action.payload ],
             };
         default:
             return state;
