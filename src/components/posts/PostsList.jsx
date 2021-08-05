@@ -68,7 +68,7 @@ const PostsList = ({ fetchPosts, posts, numOfPages }) => {
 
     return (
         <div className="postlist">
-            {renderPosts()}
+            <div className="postlist__container">{renderPosts()}</div>
             <div className="postlist__pages">
                 <Link
                     to={`/${parseInt(page) - 1}`}

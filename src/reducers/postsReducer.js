@@ -6,6 +6,7 @@ import {
     REMOVE_POST_FROM_FAV,
     FETCH_FAV_POSTS,
     CREATE_POST,
+    EDIT_POST,
 } from "../actions/types";
 
 const INITIAL_STATE = {
@@ -69,6 +70,7 @@ const postsReducer = (state = INITIAL_STATE, action) => {
                 ),
             };
         case CREATE_POST:
+        case EDIT_POST:
             return { ...state };
         default:
             return state;

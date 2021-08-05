@@ -11,6 +11,7 @@ import { loadUser } from "./actions/auth";
 import { connect } from "react-redux";
 import history from "./history";
 import PostCreate from "./components/posts/PostCreate";
+import PostEdit from "./components/posts/PostEdit";
 
 const App = ({ loadUser }) => {
     useEffect(() => {
@@ -20,6 +21,7 @@ const App = ({ loadUser }) => {
     return (
         <Router history={history}>
             <Switch>
+                <Route exact path="/post/edit/:id" component={PostEdit} />
                 <Route exact path="/post/:id" children={<Post />} />
                 <Route exact path="/new" component={PostCreate} />
                 <PrivateRoute
@@ -31,7 +33,7 @@ const App = ({ loadUser }) => {
                 <Route exact path="/register" component={Register} />
                 <Route exact path="/user/:username" component={AuthorPage} />
                 <Route exact path="/" component={Home} />
-                <Route exact path="/:post" component={Home} />
+                <Route exact path="/:page" component={Home} />
             </Switch>
         </Router>
     );

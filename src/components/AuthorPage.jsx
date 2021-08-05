@@ -6,6 +6,7 @@ import Navbar from "./navigation/Navbar";
 import Sidebar from "./navigation/Sidebar";
 import ScrollToTop from "../ScrollToTop";
 import { Link } from "react-router-dom";
+import { FaTrash } from "react-icons/fa";
 
 class AuthorPage extends React.Component {
     constructor(props) {
@@ -18,6 +19,10 @@ class AuthorPage extends React.Component {
 
     toggle = () => {
         this.setState({ isOpen: !this.state.isOpen });
+    };
+
+    handleDeletingPost = id => {
+        console.log(id);
     };
 
     componentDidMount() {
@@ -43,12 +48,30 @@ class AuthorPage extends React.Component {
                         <div>{post.description}</div>
                     </div>
                     <div className="author-post__buttons">
-                        <Link
-                            to={`/post/${post.id}`}
-                            className="author-post__link"
-                        >
-                            View the post
-                        </Link>
+                        <div className="author-post__links">
+                            <Link
+                                to={`/post/${post.id}`}
+                                className="author-post__link"
+                            >
+                                View the post
+                            </Link>
+                            {this.props.isOwnProfile && (
+                                <Link
+                                    to={`/post/edit/${post.id}`}
+                                    className="author-post__edit"
+                                >
+                                    Edit the post
+                                </Link>
+                            )}
+                        </div>
+                        {this.props.isOwnProfile && (
+                            <div
+                                onClick={() => this.handleDeletingPost(post.id)}
+                                className="author-post__delete"
+                            >
+                                <FaTrash />
+                            </div>
+                        )}
                     </div>
                 </div>
             );
