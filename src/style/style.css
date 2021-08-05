@@ -804,6 +804,46 @@
   color: #ff365f;
 }
 
+.postlist__pages {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 2rem 0 4rem 0;
+}
+
+.postlist__pages__button {
+  font-size: 1.5rem;
+  font-family: "Open Sans Condensed", sans-serif;
+  text-transform: uppercase;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+  color: #000;
+}
+
+.postlist__pages__button:hover {
+  color: #ff365f;
+}
+
+.postlist__page {
+  font-size: 2rem;
+  margin: 0 1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+  color: #000;
+}
+
+.postlist__page:hover {
+  color: #ff365f;
+}
+
 .login {
   min-height: 100vh;
   display: -webkit-box;

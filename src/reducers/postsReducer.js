@@ -10,6 +10,7 @@ import {
 
 const INITIAL_STATE = {
     listOfPosts       : [],
+    numOfPosts        : 0,
     currentPost       : null,
     // favouritePostsIds : JSON.parse(localStorage.getItem("favouritePostsIds"))
     //     ? JSON.parse(localStorage.getItem("favouritePostsIds"))
@@ -25,6 +26,7 @@ const postsReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 listOfPosts : action.payload.posts,
+                numOfPosts  : action.payload.postsCount,
             };
         case FETCH_POST:
             return { ...state, currentPost: action.payload };

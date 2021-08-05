@@ -65,8 +65,8 @@ const PostForm = props => {
                     errors.content = "You must enter content!";
                 }
 
-                if (!formValues.tags) {
-                    errors.tags = "You must enter tags!";
+                if (!formValues.tagList) {
+                    errors.tagList = "You must enter tags!";
                 }
 
                 return errors;
@@ -91,7 +91,7 @@ const PostForm = props => {
                             label="Enter Content"
                         />
                         <Field
-                            name="tags"
+                            name="tagList"
                             component={renderInput}
                             label="Enter Tags"
                         />

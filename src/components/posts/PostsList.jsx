@@ -2,14 +2,17 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchPosts } from "../../actions/posts";
 import AuthorHeader from "../AuthorHeader";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import _ from "lodash";
 
-const PostsList = ({ fetchPosts, posts }) => {
+const PostsList = ({ fetchPosts, posts, numOfPages }) => {
+    const { page } = useParams();
+
     useEffect(
         () => {
-            fetchPosts();
+            fetchPosts(page);
         },
-        [ fetchPosts ]
+        [ fetchPosts, page ]
     );
 
     const renderPosts = () => {
@@ -55,11 +58,50 @@ const PostsList = ({ fetchPosts, posts }) => {
         });
     };
 
-    return <div className="postlist">{renderPosts()}</div>;
+    const renderPageNav = () => {
+        console.log(numOfPages);
+        return _.times(numOfPages, index => (
+            <Link to={`/${index + 1}`} className="postlist__page">
+                {index + 1}
+            </Link>
+        ));
+    };
+
+    return (
+        <div className="postlist">
+            {renderPosts()}
+            <div className="postlist__pages">
+                <Link
+                    to={`/${parseInt(page) - 1}`}
+                    className="postlist__pages__button"
+                    style={{
+                        visibility : `${page > 1 ? "visible" : "hidden"}`,
+                    }}
+                >
+                    Previous Page
+                </Link>
+                {renderPageNav()}
+                <Link
+                    to={`/${parseInt(page) + 1}`}
+                    className="postlist__pages__button"
+                    style={{
+                        visibility : `${page < numOfPages
+                            ? "visible"
+                            : "hidden"}`,
+                    }}
+                >
+                    Next Page
+                </Link>
+            </div>
+        </div>
+    );
 };
 
 const mapStateToProps = state => {
-    return { posts: state.posts.listOfPosts };
+    return {
+        posts      : state.posts.listOfPosts,
+        numOfPages : Math.floor(state.posts.numOfPosts / 10) + 1,
+    };
 };
 
 export default connect(mapStateToProps, { fetchPosts })(PostsList);

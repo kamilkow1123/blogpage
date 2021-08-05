@@ -20,7 +20,7 @@ const App = ({ loadUser }) => {
     return (
         <Router history={history}>
             <Switch>
-                <Route path="/" component={Home} exact />
+                <Route path="/:page" component={Home} exact />
                 <Route path="/post/:id" children={<Post />} />
                 <Route path="/new" component={PostCreate} exact />
                 <PrivateRoute

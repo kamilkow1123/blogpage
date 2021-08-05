@@ -4,6 +4,7 @@ import Navbar from "./navigation/Navbar";
 import Sidebar from "./navigation/Sidebar";
 import { loadUser } from "../actions/auth";
 import { connect } from "react-redux";
+import ScrollToTop from "../ScrollToTop";
 
 const Home = ({ loadUser, user }) => {
     const [ isOpen, setIsOpen ] = useState(false);
@@ -20,6 +21,7 @@ const Home = ({ loadUser, user }) => {
 
     return (
         <div>
+            <ScrollToTop />
             <Navbar toggle={toggle} />
             <Sidebar toggle={toggle} isOpen={isOpen} />
             <div className="hero">

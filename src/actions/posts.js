@@ -6,9 +6,14 @@ import {
     CREATE_POST,
 } from "./types";
 import { tokenConfig } from "./auth";
+import history from "../history";
 
-export const fetchPosts = () => async (dispatch, getState) => {
-    const response = await resultsAPI.get("/post", tokenConfig(getState));
+export const fetchPosts = page => async (dispatch, getState) => {
+    const response = await resultsAPI.get(
+        `/post?page=${page}`,
+        tokenConfig(getState)
+    );
+    console.log(response);
 
     dispatch({ type: FETCH_POSTS, payload: response.data });
 };
@@ -45,10 +50,10 @@ export const createPost = formValues => async (dispatch, getState) => {
         config.headers["Authorization"] = `Token ${token}`;
     }
 
-    var body = [];
-    for (var property in formValues) {
-        var encodedKey = encodeURIComponent(property);
-        var encodedValue = encodeURIComponent(formValues[property]);
+    let body = [];
+    for (let property in formValues) {
+        let encodedKey = encodeURIComponent(property);
+        let encodedValue = encodeURIComponent(formValues[property]);
         body.push(encodedKey + "=" + encodedValue);
     }
     body = body.join("&");
@@ -59,7 +64,10 @@ export const createPost = formValues => async (dispatch, getState) => {
         // console.log(response);
 
         dispatch({ type: CREATE_POST });
+        history.push("/");
+        // alert("Successfully created new post!");
     } catch (err) {
         console.log(err);
+        alert("Could not create post, try again.");
     }
 };
