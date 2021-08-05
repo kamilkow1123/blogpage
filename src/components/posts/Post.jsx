@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useParams, Link } from "react-router-dom";
-import { fetchComments, createComment } from "../../actions/comments";
+import {
+    fetchComments,
+    createComment,
+    deleteComment,
+} from "../../actions/comments";
 import { fetchPost } from "../../actions/posts";
 import {
     addPostToFav,
@@ -36,6 +40,7 @@ const Post = ({
     favCommentsIds,
     isAuthenticated,
     createComment,
+    deleteComment,
     username,
 }) => {
     const { id } = useParams();
@@ -63,7 +68,8 @@ const Post = ({
                             {username === comment.author.username && (
                                 <div
                                     className="comment__delete"
-                                    onClick={() => deleteComment(comment.id)}
+                                    onClick={() =>
+                                        handleDeletingComment(comment.id)}
                                 >
                                     <FaTrash />
                                 </div>
@@ -121,8 +127,8 @@ const Post = ({
         }
     };
 
-    const deleteComment = commentId => {
-        console.log(commentId);
+    const handleDeletingComment = commentId => {
+        deleteComment(commentId);
     };
 
     const onCommentSubmit = formValues => {
@@ -210,4 +216,5 @@ export default connect(mapStateToProps, {
     removePostFromFav,
     removeCommentFromFav,
     createComment,
+    deleteComment,
 })(Post);

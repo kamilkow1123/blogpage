@@ -1,5 +1,5 @@
 import resultsAPI from "../apis/resultsAPI";
-import { FETCH_COMMENTS, CREATE_COMMENT } from "./types";
+import { FETCH_COMMENTS, CREATE_COMMENT, DELETE_COMMENT } from "./types";
 import { tokenConfig } from "./auth";
 import { formConfig } from "./posts";
 
@@ -31,5 +31,16 @@ export const createComment = (formValues, postId) => async (
     } catch (err) {
         console.log(err);
         alert("Could not submit comment, try again.");
+    }
+};
+
+export const deleteComment = id => async (dispatch, getState) => {
+    try {
+        // await resultsAPI.delete(`/comment/${id}`, tokenConfig(getState));
+
+        dispatch({ type: DELETE_COMMENT, payload: id });
+    } catch (err) {
+        console.log(err);
+        alert("Could not delete comment, try again.");
     }
 };
