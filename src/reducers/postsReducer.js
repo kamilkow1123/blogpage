@@ -7,6 +7,7 @@ import {
     FETCH_FAV_POSTS,
     CREATE_POST,
     EDIT_POST,
+    DELETE_POST,
 } from "../actions/types";
 
 const INITIAL_STATE = {
@@ -72,6 +73,13 @@ const postsReducer = (state = INITIAL_STATE, action) => {
         case CREATE_POST:
         case EDIT_POST:
             return { ...state };
+        case DELETE_POST:
+            return {
+                ...state,
+                authorsPosts : state.authorsPosts.filter(
+                    post => post.id !== action.payload
+                ),
+            };
         default:
             return state;
     }

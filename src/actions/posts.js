@@ -5,6 +5,7 @@ import {
     FETCH_AUTHORS_POSTS,
     CREATE_POST,
     EDIT_POST,
+    DELETE_POST,
 } from "./types";
 import { tokenConfig } from "./auth";
 import history from "../history";
@@ -17,7 +18,7 @@ export const fetchPosts = page => async (dispatch, getState) => {
         `/post?page=${page}`,
         tokenConfig(getState)
     );
-    console.log(response);
+    // console.log(response);
 
     dispatch({ type: FETCH_POSTS, payload: response.data });
 };
@@ -59,7 +60,7 @@ export const editPost = (id, formValues) => async (dispatch, getState) => {
     const { config, body } = postConfig(getState, formValues);
 
     try {
-        await resultsAPI.put(`/post/${id}`, body, config);
+        await resultsAPI.patch(`/post/${id}`, body, config);
 
         // console.log(response);
 
@@ -68,6 +69,17 @@ export const editPost = (id, formValues) => async (dispatch, getState) => {
     } catch (err) {
         console.log(err);
         alert("Could not edit post, try again.");
+    }
+};
+
+export const deletePost = id => async (dispatch, getState) => {
+    try {
+        await resultsAPI.delete(`/post/${id}`, tokenConfig(getState));
+
+        dispatch({ type: DELETE_POST, payload: id });
+    } catch (err) {
+        console.log(err);
+        alert("Could not delete post, try again.");
     }
 };
 

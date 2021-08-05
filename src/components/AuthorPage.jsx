@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchUser } from "../actions/users";
-import { fetchAuthorsPosts } from "../actions/posts";
+import { fetchAuthorsPosts, deletePost } from "../actions/posts";
 import Navbar from "./navigation/Navbar";
 import Sidebar from "./navigation/Sidebar";
 import ScrollToTop from "../ScrollToTop";
@@ -22,7 +22,7 @@ class AuthorPage extends React.Component {
     };
 
     handleDeletingPost = id => {
-        console.log(id);
+        this.props.deletePost(id);
     };
 
     componentDidMount() {
@@ -138,4 +138,5 @@ const mapStateToProps = (state, ownProps) => {
 export default connect(mapStateToProps, {
     fetchUser,
     fetchAuthorsPosts,
+    deletePost,
 })(AuthorPage);

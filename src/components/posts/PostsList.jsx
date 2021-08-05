@@ -84,7 +84,8 @@ const PostsList = ({ fetchPosts, posts, numOfPages }) => {
                     to={`/${page ? parseInt(page) + 1 : 2}`}
                     className="postlist__pages__button"
                     style={{
-                        visibility : `${page < numOfPages || !page
+                        visibility : `${page < numOfPages ||
+                        (!page && numOfPages !== 1)
                             ? "visible"
                             : "hidden"}`,
                     }}
@@ -99,7 +100,7 @@ const PostsList = ({ fetchPosts, posts, numOfPages }) => {
 const mapStateToProps = state => {
     return {
         posts      : state.posts.listOfPosts,
-        numOfPages : Math.floor(state.posts.numOfPosts / 10) + 1,
+        numOfPages : Math.ceil(state.posts.numOfPosts / 10),
     };
 };
 
