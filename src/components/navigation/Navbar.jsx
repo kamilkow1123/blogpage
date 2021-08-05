@@ -28,7 +28,7 @@ const Navbar = ({ auth, logout, toggle }) => {
                                 <li>
                                     <Link
                                         className="nav__link"
-                                        to={`/${auth.user.username}`}
+                                        to={`/user/${auth.user.username}`}
                                     >
                                         Your profile
                                     </Link>

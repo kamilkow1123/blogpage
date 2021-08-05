@@ -59,9 +59,8 @@ const PostsList = ({ fetchPosts, posts, numOfPages }) => {
     };
 
     const renderPageNav = () => {
-        console.log(numOfPages);
         return _.times(numOfPages, index => (
-            <Link to={`/${index + 1}`} className="postlist__page">
+            <Link to={`/${index + 1}`} className="postlist__page" key={index}>
                 {index + 1}
             </Link>
         ));
@@ -82,10 +81,10 @@ const PostsList = ({ fetchPosts, posts, numOfPages }) => {
                 </Link>
                 {renderPageNav()}
                 <Link
-                    to={`/${parseInt(page) + 1}`}
+                    to={`/${page ? parseInt(page) + 1 : 2}`}
                     className="postlist__pages__button"
                     style={{
-                        visibility : `${page < numOfPages
+                        visibility : `${page < numOfPages || !page
                             ? "visible"
                             : "hidden"}`,
                     }}

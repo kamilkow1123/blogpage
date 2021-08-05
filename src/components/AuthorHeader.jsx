@@ -12,7 +12,7 @@ const AuthorHeader = ({ username, fetchUser, user }) => {
     );
 
     return !user ? null : (
-        <Link to={`/${username}`} className="author-header">
+        <Link to={`/user/${username}`} className="author-header">
             by {`${user.first_name} ${user.last_name}`}
         </Link>
     );

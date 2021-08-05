@@ -9,11 +9,14 @@ import { tokenConfig } from "./auth";
 import history from "../history";
 
 export const fetchPosts = page => async (dispatch, getState) => {
+    if (!page) {
+        page = 1;
+    }
     const response = await resultsAPI.get(
         `/post?page=${page}`,
         tokenConfig(getState)
     );
-    console.log(response);
+    // console.log(response);
 
     dispatch({ type: FETCH_POSTS, payload: response.data });
 };

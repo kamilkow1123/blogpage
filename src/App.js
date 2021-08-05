@@ -20,17 +20,18 @@ const App = ({ loadUser }) => {
     return (
         <Router history={history}>
             <Switch>
-                <Route path="/:page" component={Home} exact />
-                <Route path="/post/:id" children={<Post />} />
-                <Route path="/new" component={PostCreate} exact />
+                <Route exact path="/post/:id" children={<Post />} />
+                <Route exact path="/new" component={PostCreate} />
                 <PrivateRoute
+                    exact
                     path="/favourites"
                     component={Favourtites}
-                    exact
                 />
-                <Route path="/login" component={Login} exact />
-                <Route path="/register" component={Register} exact />
-                <Route path="/:username" component={AuthorPage} exact />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/register" component={Register} />
+                <Route exact path="/user/:username" component={AuthorPage} />
+                <Route exact path="/" component={Home} />
+                <Route exact path="/:post" component={Home} />
             </Switch>
         </Router>
     );
